@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: flowmap_shader 1
+  m_Shader: {fileID: 4800000, guid: a5d43337401e106448bce71b8c8fb65b, type: 3}
+  m_ShaderKeywords: _USE_CURVE_DISSOLVE_ON _USE_CUSTOM1_Z_FLOW_ON _USE_DISSOLVE_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: 3000
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Distort_mask:
+        m_Texture: {fileID: 2800000, guid: daee2458cd9f59345aa577952ea39401, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Distort_tex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _base_texture:
+        m_Texture: {fileID: 2800000, guid: 66201a365351a00448a2b584da72ae19, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _dissolve_texture:
+        m_Texture: {fileID: 2800000, guid: e2fb1108cbe0cf14eb95357d7775056f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _emissive_map:
+        m_Texture: {fileID: 2800000, guid: fc50d3a8d900be849bf78117b8fcf30b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _flowmap:
+        m_Texture: {fileID: 2800000, guid: fc05d1a27d8726d49ba657e8fa2fbc21, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _mask_texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _BumpScale: 1
+    - _Cull: 0
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _Distort_power: 0
+    - _DstBlend: 0
+    - _Emissive_power: 1
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Glow: 1
+    - _HUE: 0.032
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _Saturation: 0
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _Time_scale: 1
+    - _UVSec: 0
+    - _Value: 0
+    - _X_speed: 0
+    - _Y_speed: -1
+    - _ZWrite: 1
+    - _Ztest: 4
+    - _Zwrite: 1
+    - _add_or_blend: 1
+    - _alpha_power: 1
+    - _base_front_power: 1
+    - _dissolve: 1
+    - _edge_hardness: 3.19
+    - _flow: 1.5
+    - _use_change_color: 0
+    - _use_curve_dissolve: 1
+    - _use_custom1_x_dissolve: 0
+    - _use_custom1_z_flow: 1
+    - _use_dissolve: 1
+    m_Colors:
+    - _Base_color: {r: 0.69, g: 0.43217, b: 0.2829, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Distort_mask_uv: {r: 1, g: 1, b: 0, a: 0}
+    - _Distort_uv: {r: 2, g: 1, b: 0, a: 0}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Emissive_color: {r: 1, g: 0.389, b: 0.060000002, a: 0}
+    - _base_front_color: {r: 1, g: 1, b: 1, a: 0}
+    - _base_speed: {r: 0, g: 0, b: 1, a: 0}
+    - _base_uv: {r: 1, g: 1, b: 0, a: 0}
+    - _dissolve_speed: {r: 0, g: 0, b: 0, a: 0}
+    - _dissolve_uv: {r: 1, g: 1, b: 0, a: 0}
+    - _mask_speed: {r: 0, g: 0, b: 0, a: 0}
+    - _mask_uv: {r: 1, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []

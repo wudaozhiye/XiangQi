@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: New Material 2
+  m_Shader: {fileID: 4800000, guid: 747e102ec40d5a44a92a17fba1c96885, type: 3}
+  m_ShaderKeywords: _USE_EMISSIVE_ON _USE_MATCAT_ON _USE_SECOND_TEX_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BaseTex:
+        m_Texture: {fileID: 2800000, guid: 7d305ebdcc1e9ec49909a3819f48a059, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BuffTex:
+        m_Texture: {fileID: 2800000, guid: 53834649a8e17764092bbdc93d3618d8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BuffTex_switch:
+        m_Texture: {fileID: 2800000, guid: c0a67760d4eab48448a7068bd0455637, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Emissive_Tex:
+        m_Texture: {fileID: 2800000, guid: f340f3022afcbb04cb1f793fe7b2413b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _dissolve:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _matcap:
+        m_Texture: {fileID: 2800000, guid: bd632179955bffe40a7c1ab9959b1f5a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _normal_map:
+        m_Texture: {fileID: 2800000, guid: 2e547ec4bd9807544b8bd7caa9869a0a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _special_buff_switch:
+        m_Texture: {fileID: 2800000, guid: c0a67760d4eab48448a7068bd0455637, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _ASEOutalpha: 0
+    - _ASEOutlineWidth: 0.005
+    - _BuffTex_switch_dissolve: 1
+    - _BuffTex_switch_edge_hardness: 22
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _Emissve_power: 3
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    - __dirty: 1
+    - _dissolve_Emissve_power: 0
+    - _dissolve_edge_dissolve: 1
+    - _edge_clip: 0
+    - _edge_width: 0
+    - _frensel_hard: 0
+    - _frensel_power: 0
+    - _frensel_range: 0
+    - _shadow_clip: 0.64
+    - _shadow_edge: 0
+    - _special_buff_dissolve: 1
+    - _special_buff_switch_edge_hardness: 1
+    - _use_dissolve: 0
+    - _use_emissive: 1
+    - _use_frensel: 0
+    - _use_matcat: 1
+    - _use_second_tex: 1
+    m_Colors:
+    - _ASEOutlineColor: {r: 0.2358491, g: 0.06021679, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Emissve_color: {r: 1, g: 0, b: 0, a: 0}
+    - _dissolve_Emissve_color: {r: 0, g: 0, b: 0, a: 0}
+    - _drak: {r: 0.49056602, g: 0.0666429, b: 0.43918267, a: 0}
+    - _frensel_color: {r: 0, g: 0, b: 0, a: 0}
+    - _light: {r: 1, g: 1, b: 1, a: 0}
+  m_BuildTextureStacks: []
