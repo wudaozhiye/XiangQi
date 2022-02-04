@@ -4,45 +4,47 @@ using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
+
 /// <summary>
-/// æ•°æ®åŒ…ç±»å‹
+/// Êı¾İ°üÀàĞÍ
 /// </summary>
 public enum PacketType
 {
     /// <summary>
-    /// åŒ…ç±»å‹æœªè¢«åˆå§‹åŒ–
+    /// °üÀàĞÍÎ´±»³õÊ¼»¯
     /// </summary>
     None = 0,
 
     /// <summary>
-    /// è¿æ¥æœåŠ¡å™¨æˆåŠŸ
+    /// Á¬½Ó·şÎñÆ÷³É¹¦
     /// </summary>
     ConnectSuccess = 1,
 
     /// <summary>
-    /// è¿æ¥æœåŠ¡å™¨å¤±è´¥
+    /// Á¬½Ó·şÎñÆ÷Ê§°Ü
     /// </summary>
     ConnectFailed = 2,
 
     /// <summary>
-    /// æ”¶åˆ°æ–°çš„TCPæ•°æ®åŒ…
+    /// ÊÕµ½ĞÂµÄTCPÊı¾İ°ü
     /// </summary>
     TcpPacket = 3,
 
     /// <summary>
-    /// æœåŠ¡å™¨è¿æ¥æ–­å¼€
+    /// ·şÎñÆ÷Á¬½Ó¶Ï¿ª
     /// </summary>
     ConnectDisconnect = 4,
 }
+
 /// <summary>
-/// ç½‘ç»œåŒ…å®šä¹‰
+/// ÍøÂç°ü¶¨Òå
 /// </summary>
 public class NetPacket
 {
     /// <summary>
-    /// ç½‘ç»œåŒ…æ„é€ å‡½æ•°
+    /// ÍøÂç°ü¹¹Ôìº¯Êı
     /// </summary>
-    /// <param name="packetType">ç½‘ç»œåŒ…ç±»å‹</param>
+    /// <param name="packetType">ÍøÂç°üÀàĞÍ</param>
     public NetPacket(PacketType packetType)
     {
         this.packetType = packetType;
@@ -51,51 +53,52 @@ public class NetPacket
     }
 
     /// <summary>
-    /// åŒ…çš„ç±»å‹
+    /// °üµÄÀàĞÍ
     /// </summary>
     public PacketType packetType = PacketType.None;
 
     /// <summary>
-    /// å¦‚æœåŒ…ç±»å‹æ˜¯TcpPacket,åˆ™è¡¨ç¤ºè¿™ä¸ªåŒ…çš„åè®®å· å¦åˆ™æ— æ„ä¹‰
+    /// Èç¹û°üÀàĞÍÊÇTcpPacket,Ôò±íÊ¾Õâ¸ö°üµÄĞ­ÒéºÅ ·ñÔòÎŞÒâÒå
     /// </summary>
     public int protoCode = 0;
 
     /// <summary>
-    /// è¿™ä¸ªå‚æ•°ï¼Œå¦‚æœæ˜¯åœ¨æ¥æ”¶åŒ…å¤´æ—¶ï¼ŒæŒ‡çš„æ˜¯åŒ…å¤´æ”¶åˆ°å¤šå°‘å­—èŠ‚äº†ï¼Œå¦‚æœæ˜¯åœ¨æ¥æ”¶åŒ…ä½“æ—¶ï¼ŒæŒ‡çš„æ˜¯åŒ…ä½“æ”¶åˆ°å¤šå°‘å­—èŠ‚äº†
+    /// Õâ¸ö²ÎÊı£¬Èç¹ûÊÇÔÚ½ÓÊÕ°üÍ·Ê±£¬Ö¸µÄÊÇ°üÍ·ÊÕµ½¶àÉÙ×Ö½ÚÁË£¬Èç¹ûÊÇÔÚ½ÓÊÕ°üÌåÊ±£¬Ö¸µÄÊÇ°üÌåÊÕµ½¶àÉÙ×Ö½ÚÁË
     /// </summary>
     public int currRecv = 0;
 
     /// <summary>
-    /// åŒ…å¤´æ•°æ® æ¥æ”¶æ—¶è°ƒç”¨
+    /// °üÍ·Êı¾İ ½ÓÊÕÊ±µ÷ÓÃ
     /// </summary>
     public byte[] PacketHeaderBytes = null;
 
     /// <summary>
-    /// åŒ…ä½“æ•°æ® æ¥æ”¶æ—¶è°ƒç”¨
+    /// °üÌåÊı¾İ ½ÓÊÕÊ±µ÷ÓÃ
     /// </summary>
     public byte[] PacketBodyBytes = null;
 
     /// <summary>
-    /// åŒ…å®Œæ•´æ•°æ® å‘é€æ—¶è°ƒç”¨
+    /// °üÍêÕûÊı¾İ ·¢ËÍÊ±µ÷ÓÃ
     /// </summary>
     public byte[] PacketBytes = null;
 
     /// <summary>
-    /// å®šä¹‰ä¸€ä¸ªé…ç½®å˜é‡ï¼ŒåŒ…å¤´å ç”¨8ä¸ªå­—èŠ‚
-    /// 1. å‰4ä¸ªå­—èŠ‚è¡¨ç¤ºåŒ…ä½“çš„é•¿åº¦(ä¸åŒ…å«åŒ…å¤´éƒ¨åˆ†)
-    /// 2. å4ä¸ªå­—èŠ‚è¡¨ç¤ºè¿™ä¸ªåŒ…çš„åè®®å·
+    /// ¶¨ÒåÒ»¸öÅäÖÃ±äÁ¿£¬°üÍ·Õ¼ÓÃ8¸ö×Ö½Ú
+    /// 1. Ç°4¸ö×Ö½Ú±íÊ¾°üÌåµÄ³¤¶È(²»°üº¬°üÍ·²¿·Ö)
+    /// 2. ºó4¸ö×Ö½Ú±íÊ¾Õâ¸ö°üµÄĞ­ÒéºÅ
     /// </summary>
     public static int HEADER_SIZE = 8;
 }
+
 /// <summary>
-/// ç½‘ç»œåŒ…é˜Ÿåˆ— çº¿ç¨‹å®‰å…¨
+/// ÍøÂç°ü¶ÓÁĞ Ïß³Ì°²È«
 /// </summary>
 public class PacketQueue
 {
     private Queue<NetPacket> netPackets = new Queue<NetPacket>();
 
     /// <summary>
-    /// ç½‘ç»œåŒ…å…¥é˜Ÿåˆ—
+    /// ÍøÂç°üÈë¶ÓÁĞ
     /// </summary>
     /// <param name="netPacket"></param>
     public void Enqueue(NetPacket netPacket)
@@ -107,7 +110,7 @@ public class PacketQueue
     }
 
     /// <summary>
-    /// ç½‘ç»œåŒ…å‡ºé˜Ÿåˆ—
+    /// ÍøÂç°ü³ö¶ÓÁĞ
     /// </summary>
     /// <returns></returns>
     public NetPacket Dequeue()
@@ -124,7 +127,7 @@ public class PacketQueue
     }
 
     /// <summary>
-    /// æ¸…ç©ºç½‘ç»œåŒ…é˜Ÿåˆ—
+    /// Çå¿ÕÍøÂç°ü¶ÓÁĞ
     /// </summary>
     public void Clear()
     {
@@ -134,13 +137,17 @@ public class PacketQueue
         }
     }
 }
+
+/// <summary>
+/// TCP¿Í»§¶ËÀà
+/// </summary>
 public class TCPClient
 {
     /// <summary>
-    /// è¯·æ±‚è¿æ¥æœåŠ¡å™¨,è¿™ä¸ªå‡½æ•°åœ¨ä¸»çº¿ç¨‹è°ƒç”¨
+    /// ÇëÇóÁ¬½Ó·şÎñÆ÷,Õâ¸öº¯ÊıÔÚÖ÷Ïß³Ìµ÷ÓÃ
     /// </summary>
-    /// <param name="address">æœåŠ¡å™¨åœ°å€</param>
-    /// <param name="port">æœåŠ¡å™¨ç«¯å£å·</param>
+    /// <param name="address">·şÎñÆ÷µØÖ·</param>
+    /// <param name="port">·şÎñÆ÷¶Ë¿ÚºÅ</param>
     public void Connect(string address, int port)
     {
         lock (this)
@@ -159,8 +166,9 @@ public class TCPClient
             }
         }
     }
-     /// <summary>
-    /// ä¸»çº¿ç¨‹ä¸»åŠ¨å–èµ°é˜Ÿåˆ—ä¸­çš„æ‰€æœ‰ç½‘ç»œåŒ…
+
+    /// <summary>
+    /// Ö÷Ïß³ÌÖ÷¶¯È¡×ß¶ÓÁĞÖĞµÄËùÓĞÍøÂç°ü
     /// </summary>
     /// <returns></returns>
     public List<NetPacket> GetPackets()
@@ -176,11 +184,12 @@ public class TCPClient
 
         return packetList;
     }
+
     /// <summary>
-    /// ä¸»çº¿ç¨‹è°ƒç”¨ï¼Œå‘é€ç½‘ç»œåŒ…
+    /// Ö÷Ïß³Ìµ÷ÓÃ£¬·¢ËÍÍøÂç°ü
     /// </summary>
-    /// <param name="pCode">åè®®å·</param>
-    /// <param name="body">åŒ…ä½“å­—èŠ‚æµ</param>
+    /// <param name="pCode">Ğ­ÒéºÅ</param>
+    /// <param name="body">°üÌå×Ö½ÚÁ÷</param>
     public void SendAsync(int pCode, byte[] body)
     {
         byte[] protoCode = BitConverter.GetBytes(IPAddress.HostToNetworkOrder(pCode));
@@ -192,8 +201,9 @@ public class TCPClient
 
         SendAsync(package);
     }
+
     /// <summary>
-    /// ä¸»çº¿ç¨‹è°ƒç”¨ï¼Œå‘é€ç½‘ç»œå­—èŠ‚æµ
+    /// Ö÷Ïß³Ìµ÷ÓÃ£¬·¢ËÍÍøÂç×Ö½ÚÁ÷
     /// </summary>
     /// <param name="bytes"></param>
     private void SendAsync(byte[] bytes)
@@ -230,8 +240,9 @@ public class TCPClient
             }
         }
     }
+
     /// <summary>
-    /// è¯·æ±‚é“¾æ¥æœåŠ¡å™¨çš„å›è°ƒå‡½æ•°
+    /// ÇëÇóÁ´½Ó·şÎñÆ÷µÄ»Øµ÷º¯Êı
     /// </summary>
     /// <param name="asyncResult"></param>
     public void ConnectCallback(IAsyncResult asyncResult)
@@ -245,7 +256,7 @@ public class TCPClient
 
             try
             {
-                // é“¾æ¥æˆåŠŸ
+                // Á´½Ó³É¹¦
                 socket = (Socket)asyncResult.AsyncState;
 
                 socketState = true;
@@ -254,7 +265,7 @@ public class TCPClient
 
                 packetQueue.Enqueue(new NetPacket(PacketType.ConnectSuccess));
 
-                // å¼€å§‹æ¥æ”¶æ•°æ®åŒ…åŒ…å¤´
+                // ¿ªÊ¼½ÓÊÕÊı¾İ°ü°üÍ·
                 ReadPacket();
             }
             catch (Exception)
@@ -269,7 +280,7 @@ public class TCPClient
     }
 
     /// <summary>
-    /// æ¥æ”¶åˆ°æ•°æ®åŒ…åŒ…å¤´çš„å›è°ƒå‡½æ•°
+    /// ½ÓÊÕµ½Êı¾İ°ü°üÍ·µÄ»Øµ÷º¯Êı
     /// </summary>
     /// <param name="asyncResult"></param>
     public void ReceiveHeader(IAsyncResult asyncResult)
@@ -280,10 +291,10 @@ public class TCPClient
             {
                 NetPacket netPacket = (NetPacket)asyncResult.AsyncState;
 
-                // å®é™…è¯»å–åˆ°çš„å­—èŠ‚æ•°
+                // Êµ¼Ê¶ÁÈ¡µ½µÄ×Ö½ÚÊı
                 int readSize = socket.EndReceive(asyncResult);
 
-                // æœåŠ¡å™¨ä¸»åŠ¨æ–­å¼€ç½‘ç»œ
+                // ·şÎñÆ÷Ö÷¶¯¶Ï¿ªÍøÂç
                 if (readSize == 0)
                 {
                     Disconnect();
@@ -295,30 +306,30 @@ public class TCPClient
 
                 if (netPacket.currRecv == NetPacket.HEADER_SIZE)
                 {
-                    // æ”¶åˆ°äº†çº¦å®šçš„åŒ…å¤´çš„é•¿åº¦,é‡ç½®ä¸‹æ ‡è®°ï¼Œåé¢å‡†å¤‡æ¥æ”¶åŒ…ä½“
+                    // ÊÕµ½ÁËÔ¼¶¨µÄ°üÍ·µÄ³¤¶È,ÖØÖÃÏÂ±ê¼Ç£¬ºóÃæ×¼±¸½ÓÊÕ°üÌå
                     netPacket.currRecv = 0;
 
-                    // æ­¤åŒ…çš„åŒ…ä½“å¤§å°
+                    // ´Ë°üµÄ°üÌå´óĞ¡
                     int bodySize = IPAddress.NetworkToHostOrder(BitConverter.ToInt32(netPacket.PacketHeaderBytes, 0));
 
-                    // æ­¤åŒ…çš„åè®®å·
+                    // ´Ë°üµÄĞ­ÒéºÅ
                     int protoCode = IPAddress.NetworkToHostOrder(BitConverter.ToInt32(netPacket.PacketHeaderBytes, 4));
                     netPacket.protoCode = protoCode;
 
-                    // æ³¨æ„:æœ‰äº›åè®®ç¡®å®æ²¡æœ‰åŒ…ä½“éƒ¨åˆ†ï¼Œæ¯”å¦‚å¿ƒè·³ æ­¤æ—¶ bodySize == 0
+                    // ×¢Òâ:ÓĞĞ©Ğ­ÒéÈ·ÊµÃ»ÓĞ°üÌå²¿·Ö£¬±ÈÈçĞÄÌø ´ËÊ± bodySize == 0
                     if (bodySize < 0)
                     {
                         Disconnect();
                         return;
                     }
 
-                    // å¼€å§‹æ¥æ”¶åŒ…ä½“
+                    // ¿ªÊ¼½ÓÊÕ°üÌå
                     netPacket.PacketBodyBytes = new byte[bodySize];
 
                     if (bodySize == 0)
                     {
                         packetQueue.Enqueue(netPacket);
-                        // å¼€å§‹è¯»å–ä¸‹ä¸€æ¬¡åŒ…
+                        // ¿ªÊ¼¶ÁÈ¡ÏÂÒ»´Î°ü
                         ReadPacket();
                         return;
                     }
@@ -327,7 +338,7 @@ public class TCPClient
                 }
                 else
                 {
-                    // åŒ…å¤´æ•°æ®è¿˜æ²¡æœ‰æ”¶å®Œ,æ¥ç»­æ¥æ”¶åŒ…å¤´
+                    // °üÍ·Êı¾İ»¹Ã»ÓĞÊÕÍê,½ÓĞø½ÓÊÕ°üÍ·
                     int remainSize = NetPacket.HEADER_SIZE - netPacket.currRecv;
                     socket.BeginReceive(netPacket.PacketBodyBytes, netPacket.currRecv, remainSize, SocketFlags.None, ReceiveHeader, netPacket);
                 }
@@ -340,7 +351,7 @@ public class TCPClient
     }
 
     /// <summary>
-    /// æ¥æ”¶åˆ°æ•°æ®åŒ…åŒ…ä½“çš„å›è°ƒå‡½æ•°
+    /// ½ÓÊÕµ½Êı¾İ°ü°üÌåµÄ»Øµ÷º¯Êı
     /// </summary>
     /// <param name="asyncResult"></param>
     public void ReceiveBody(IAsyncResult asyncResult)
@@ -355,7 +366,7 @@ public class TCPClient
 
                 if (readSize == 0)
                 {
-                    // æœåŠ¡å™¨ä¸»åŠ¨æ–­å¼€ç½‘ç»œ
+                    // ·şÎñÆ÷Ö÷¶¯¶Ï¿ªÍøÂç
                     Disconnect();
                     return;
                 }
@@ -364,17 +375,17 @@ public class TCPClient
 
                 if (netPacket.currRecv == netPacket.PacketBodyBytes.Length)
                 {
-                    // æ”¶åˆ°äº†çº¦å®šçš„åŒ…ä½“é•¿åº¦ é‡ç½®ä¸‹æ ‡è®°
+                    // ÊÕµ½ÁËÔ¼¶¨µÄ°üÌå³¤¶È ÖØÖÃÏÂ±ê¼Ç
                     netPacket.currRecv = 0;
 
                     packetQueue.Enqueue(netPacket);
 
-                    // å¼€å§‹è¯»å–ä¸‹ä¸€æ¬¡åŒ…
+                    // ¿ªÊ¼¶ÁÈ¡ÏÂÒ»´Î°ü
                     ReadPacket();
                 }
                 else
                 {
-                    // æ²¡æœ‰æ”¶åˆ°è¶³å¤Ÿçš„åŒ…ä½“çš„é•¿åº¦,ç»§ç»­æ”¶åŒ…ä½“
+                    // Ã»ÓĞÊÕµ½×ã¹»µÄ°üÌåµÄ³¤¶È,¼ÌĞøÊÕ°üÌå
                     int remainSize = netPacket.PacketBodyBytes.Length - netPacket.currRecv;
                     socket.BeginReceive(netPacket.PacketBodyBytes, netPacket.currRecv, remainSize, SocketFlags.None, ReceiveBody, netPacket);
                 }
@@ -387,7 +398,7 @@ public class TCPClient
     }
 
     /// <summary>
-    /// æ–­å¼€ç½‘ç»œé“¾æ¥,æœ‰å¯èƒ½æ˜¯ioçº¿ç¨‹è°ƒç”¨,ä¹Ÿå¯èƒ½æ˜¯ä¸»çº¿ç¨‹è°ƒç”¨
+    /// ¶Ï¿ªÍøÂçÁ´½Ó,ÓĞ¿ÉÄÜÊÇioÏß³Ìµ÷ÓÃ,Ò²¿ÉÄÜÊÇÖ÷Ïß³Ìµ÷ÓÃ
     /// </summary>
     public void Disconnect()
     {
@@ -420,30 +431,31 @@ public class TCPClient
             return socketState;
         }
     }
+
     private void ReadPacket()
     {
-        // åˆ›å»ºä¸€ä¸ªTcpçš„ç©ºåŒ…
+        // ´´½¨Ò»¸öTcpµÄ¿Õ°ü
         NetPacket netPacket = new NetPacket(PacketType.TcpPacket);
 
-        // çº¦å®šçš„æ˜¯åŒ…å¤´8ä¸ªå­—èŠ‚
+        // Ô¼¶¨µÄÊÇ°üÍ·8¸ö×Ö½Ú
         netPacket.PacketHeaderBytes = new byte[NetPacket.HEADER_SIZE];
 
-        // å¼€å§‹æ¥æ”¶è¿œç«¯å‘æ¥çš„æ•°æ®åŒ…å¤´
+        // ¿ªÊ¼½ÓÊÕÔ¶¶Ë·¢À´µÄÊı¾İ°üÍ·
         socket.BeginReceive(netPacket.PacketHeaderBytes, 0, NetPacket.HEADER_SIZE, SocketFlags.None, ReceiveHeader, netPacket);
     }
 
     /// <summary>
-    /// è¿™ä¸ªTCPClientå¯¹è±¡ç®¡ç†çš„å®¢æˆ·ç«¯socket
+    /// Õâ¸öTCPClient¶ÔÏó¹ÜÀíµÄ¿Í»§¶Ësocket
     /// </summary>
     private Socket socket = null;
 
     /// <summary>
-    /// æ¨é€ç»™ä¸»çº¿ç¨‹æ¥æ”¶çš„ç½‘ç»œåŒ…é˜Ÿåˆ—
+    /// ÍÆËÍ¸øÖ÷Ïß³Ì½ÓÊÕµÄÍøÂç°ü¶ÓÁĞ
     /// </summary>
     private PacketQueue packetQueue = new PacketQueue();
 
     /// <summary>
-    /// å½“å‰ç½‘ç»œçŠ¶æ€ true æ˜¯å·²é“¾æ¥ false æ˜¯æœªé“¾æ¥
+    /// µ±Ç°ÍøÂç×´Ì¬ true ÊÇÒÑÁ´½Ó false ÊÇÎ´Á´½Ó
     /// </summary>
     private bool socketState = false;
 }
