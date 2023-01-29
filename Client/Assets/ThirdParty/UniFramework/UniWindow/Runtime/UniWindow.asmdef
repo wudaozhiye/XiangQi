@@ -1,0 +1,16 @@
+{
+    "name": "UniWindow",
+    "rootNamespace": "",
+    "references": [
+        "GUID:c8a46ca3a30c8124e99d47f0ef3edf88"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
