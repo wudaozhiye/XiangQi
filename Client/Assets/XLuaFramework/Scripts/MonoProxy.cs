@@ -63,7 +63,7 @@ public class MonoProxy : MonoBehaviour
     /// <param name="action"></param>
     public void BindUpdate(Action action)
     {
-        Observable.EveryUpdate().Subscribe(_ => { action(); }).AddTo(this);
+        //Observable.EveryUpdate().Subscribe(_ => { action(); }).AddTo(this);
     }
 
     void OnDestroy()
