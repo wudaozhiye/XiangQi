@@ -1,16 +1,15 @@
-using Common;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public enum PlayerFlag
 {
-    Red,    //¼º·½
-    Black,  //µĞ·½
+    Red,    //å·±æ–¹
+    Black,  //æ•Œæ–¹
 }
 public enum ChessType
 {
-    Jiang = 1,    //µĞ·½*10
+    Jiang = 1,    //æ•Œæ–¹*10
     Che =2,
     Ma =3,
     Pao =4,
@@ -40,7 +39,7 @@ public class ChessManager : SingletonBehaviour<ChessManager>
 
     public void StartGame()
     {
-        ChessManager.chess = new int[10, 9]{  //´Ë×¢ÊÍÒªÈ¡Ïû
+        ChessManager.chess = new int[10, 9]{  //æ­¤æ³¨é‡Šè¦å–æ¶ˆ
 			{2,3,6,5,1,5,6,3,2},
             {0,0,0,0,0,0,0,0,0},
             {0,4,0,0,0,0,0,4,0},
@@ -81,7 +80,7 @@ public class ChessManager : SingletonBehaviour<ChessManager>
         int xx = -4, zz = 4;
         for (int i = 1; i <= count; i++)
         {
-            GameObject item = new GameObject();//ÕÒµ½Ô¤ÉèÌå
+            GameObject item = new GameObject();//æ‰¾åˆ°é¢„è®¾ä½“
             item.name = "item"+i;
             item.transform.parent = chessP.transform;
             item.transform.localPosition = new Vector3(xx,0, zz);

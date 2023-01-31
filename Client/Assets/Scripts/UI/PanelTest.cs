@@ -19,7 +19,7 @@ public class PanelTest : MonoBehaviour
 
     private void StartGame()
     {
-        ChessManager.Instance.StartGame();
+        //ChessManager.Instance.StartGame();
     }
     private void HuiQi()
     {

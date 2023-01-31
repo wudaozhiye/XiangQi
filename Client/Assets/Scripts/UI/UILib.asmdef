@@ -1,0 +1,17 @@
+{
+    "name": "UILib",
+    "rootNamespace": "",
+    "references": [
+        "GUID:4f858641636069f47855cea398aed0b5",
+        "GUID:c8a46ca3a30c8124e99d47f0ef3edf88"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
